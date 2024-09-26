@@ -25,10 +25,9 @@ import base64
 # public_key = key_pair.publickey()
 # print(public_key.export_key())
 # exit(0)
-# sPriv = "-----BEGIN RSA PRIVATE KEY-----\nMIIEowIBAAKCAQEA3AqNkw+4Pnd0fKkYQRKkr8BDrUDVxD75cHizbkfKE4CnWGEW\nfP7Yi25nBp10qCyOdBfr1LD7DGXJpGJA4L1teUOzbT2ztEZGPuur532z/bQdcIte\nIIipO4fGzsCiSkeXVu+W/rLWHGuHgss2ULxeAx8mzbSc1UqdV4z1wmERprqNLLZZ\nIRAewYkdBIhQ57IvxX+DXeQTPkPPO4jZTmWVcf7/JpmDrDiOWbl/fg/UPNxzxvO3\nC2MA3FEr1ZmvUgqKX1M3XZS6FKvJCvnNQdYxPVRe3Ra6KOdA6vdfCOCoGFH8CjwA\nI9Aquz8AM951Sk3tQp8TGXeQOx2H2vemohmAbQIDAQABAoIBABi3zsOQZoAN5zYB\nwMm+kGV10aRqvhi3gknSJUXkJp0ePK4+6cnMzwKKumQR2AL0TmRYM5PG9cykuowO\nxX75iIywwD0rSz6bDlUPIFZ21ntPemckIMTC1U/sprafCRwTArsvWuTtrgOvSJ+2\nuDlFj8IGA9Pj0CJdqWMmYI0fXl4+LT7QleYdoPON0wOMwKRztv7JiLb0zdgAFKhR\n/hpQAL++6FFnH6izSwvd+TDb8jLk2EE3+9XY/SObm+Fftgm2sef11nuTr8GYDycu\nvsfDFxnWmpn7xvMnalGk3+kchoReUHYxoEBo5Ryj5kK5ZETMeWThNxqvqUuHBq3/\nb4x+PLkCgYEA7HoLoF9QWQOOK9IOHWxLl+R7n1ZJwQBqcPm8sNJoQkH1oL3ResPD\nZM12/DDNg5QtgFoe7mDYJnqr8Nc4lm6fgEtM/yGVJ1nAg6TEJEmSp1C5Ksvu8S1H\nKLdZ/OM51lUGuY7nN+rA7h41KnM8Tc6cGBo2X0kUCJsGmf4NSqLAyj8CgYEA7jUk\nQ4wBmH7xvgho8moSQLhP7BR8UahB8Wcw2LQ/tGwRJ9/LZ9hKMQS/hThbCWoOMHwN\ntKSIYnZ7uqWDZ20YJ0PPv967F93oQS7sf6RBoYmm8QEB62A/BrVqj33kCHb5Bu60\nmfktFroS2DwFSvH3lLX77rkiOfhm+EJhKQXAklMCgYACR8sE6OZldVtRoNzx+7Fe\n7Z0jlDlx2wcrv7zKF71ZpjkwK6RxgqHHvxN+qxnQQwWNT1EtC1IKTPSLhgfNq5Nu\nMUu0yiYeEweAPX6Guw7m/ihK+Vx8hutAwUPk5GwSXQ+Lio1ARMtHgJMSrbnPJkbr\nFJWhpZrD2nrd0U1fguJJEQKBgQDl34qbVKTFkNug02TTauEqa7NU04AVHRZl63sL\n5QYFCrSTkjgsgmE2ZKqd2QChWSNQTqa7SHwE6OoF+GuSh4jje2Eke8B5C8ByBuJb\nWxuq07eyo5JCnqKzyqaGyqogMQ+oTPskC34jjHVbDrDc3hxZ+jSg7y/EWZ6kvQoe\nGFr52QKBgDHKMyQ8W2vccZeFJWKThjrM6fatKRgnit2VEUN7qpxyNoFjrHbt4Mzy\nB6JDQ+cMPJ28FhqR4FcjPbqS5osLWIpZe/QXalnFVEDEjePJe2iySZH6rXaOfhb2\nRulv2YiLx0w1W5L44MfJQ4PSsZuTRVC0lQEcWmsdrov6N7hmUUS3\n-----END RSA PRIVATE KEY-----"
-sPriv = ""
-# sPub = "-----BEGIN PUBLIC KEY-----\nMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA3AqNkw+4Pnd0fKkYQRKk\nr8BDrUDVxD75cHizbkfKE4CnWGEWfP7Yi25nBp10qCyOdBfr1LD7DGXJpGJA4L1t\neUOzbT2ztEZGPuur532z/bQdcIteIIipO4fGzsCiSkeXVu+W/rLWHGuHgss2ULxe\nAx8mzbSc1UqdV4z1wmERprqNLLZZIRAewYkdBIhQ57IvxX+DXeQTPkPPO4jZTmWV\ncf7/JpmDrDiOWbl/fg/UPNxzxvO3C2MA3FEr1ZmvUgqKX1M3XZS6FKvJCvnNQdYx\nPVRe3Ra6KOdA6vdfCOCoGFH8CjwAI9Aquz8AM951Sk3tQp8TGXeQOx2H2vemohmA\nbQIDAQAB\n-----END PUBLIC KEY-----"
-sPub = ""
+sPriv = "-----BEGIN RSA PRIVATE KEY-----\nMIIEowIBAAKCAQEAqhHBI8P5uzFToYd7tgttT0WajjRK+WNnDsyZuw4KEm6RW9Az\nQod5Qu9tHH1+5QW7vwpXkwhDtoDhp7t5d0mWrVLn29uqkiFxIFW7d5W/ixARdT/e\n8aji4poNLwGiE7o2PKhfLRulP2854TkeyGFWy5bACKSQOQOVVgCt7n6mHwILS235\n1CycnIF0ngeKFN/okKgZKzIk5ThqfjQp49JSmHehqRxs9GfdLJGRR9rDUPF0odm9\n8EBk/zqtUbAeyt2XZNHxlgaNYBSJqFa7wny1nZalwhsU5MPagPHkw/upTg4qQLFT\ndePpOBuwFkw3RHMgmFWytxWrP5Jmky26WKfUeQIDAQABAoIBACsQcdqvnkYDWIz3\ndKEFRbmkA13s6es6e3co4eiWxoAiVVZtYv1+tnr3i6aCNKajjAX1BXXqytKk0f8a\nHsjQ7oGXE7T9a7SzGSU58E14stbwy6rn8Hk67bC5l4sGm9bo+SDk9azDalWkwYBB\naYUN+N92ncvSd96oBKGRbHmOwlvpS+lLuWoA7orZJlZlOmj58OhyLedwx2TMT6dw\nfiJJ9ZoR9kAmTcZostNbydOFx6U04tdsb5ubnF13GHVWeJZqaI7HqBkQWOM6heDM\nFJbJPuUu9dSlnOh5JOfrSN+QEbU94Lkor+T+I294zj2WCM7YHcsakARZ0FP6lCQn\n0MQHjJ0CgYEAzVHIPe0kNHrJWE20X60W2AfpOIZUg+43rNZQpK26Isj4nVPVpN32\n/DBnI46xB63hM7J/X3UmB/LeKo8+GZe2O++tdbK5yYm95NpETTaICiH/f1+/v4AD\nZukVneTwXTVJOC2fv7gvSdD3Bq9LvIYNnfrxHHmfiGHIruN9SASHPk8CgYEA1AyB\nBheHJB7S40olRnpqPZ6Onlj1KA9Nzce59+jSkcRtQZrTRTcPcUg1RT1jYOo3izU+\n1SO5kEsbzGniR2Vd0/sKLxWhDiMUABfTcK1224trihsoS3E3Jrz9G3bDVEiJH3FZ\nG7LAmjHfUyXOUod26q1uScXo9Zfgk9bvO6UIlrcCgYB4CHnSilMCQ052y2bKEH0s\nauOT4iSCxL/T0a9vtwj80RVXlO1v5zw/j2Scywz/+k2QVahVfD1xpDDyHLAnciRd\nwe9cwdIP2vEjW99WbKz3j4y5QJbvM73JajbzCibjtwVJTJL6GIm80+e3BsB2RMCt\nPUm8ZfY4W0JhzCkv80XFzQKBgQCGs+rCk++lYm9VM6S6QMl8m1y9+oTCDfa+4kGg\n2qXpM360TkYnkfKdY+FzOqwGxMLEC+7+NtOKdiwSjrDP6fTQ1IiDoJnPATmTVY9b\n5NW8YbTO5rGSOzltwmCHMcqjn/B7qOWSUttHGKdlin6mrqc8LTACbVavrOtc/wy6\nNvxdwQKBgFPKL0khzpaxc1dam5KsWZrsUFQKxnon7PD93hI7DPWW/BugAYAig/WI\nj3ebABvaX6IJUyRgB4RjAwVA3kMu2d+FHGOsN2sCI37/3kYjIv5ZKe370TYCPKJM\nXHSo4bqIj47xiScDJkTv7/dtssP/Ba2V6sa8CrAeMBHQMskVz0T2\n-----END RSA PRIVATE KEY-----"
+sPub = "-----BEGIN PUBLIC KEY-----\nMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAqhHBI8P5uzFToYd7tgtt\nT0WajjRK+WNnDsyZuw4KEm6RW9AzQod5Qu9tHH1+5QW7vwpXkwhDtoDhp7t5d0mW\nrVLn29uqkiFxIFW7d5W/ixARdT/e8aji4poNLwGiE7o2PKhfLRulP2854TkeyGFW\ny5bACKSQOQOVVgCt7n6mHwILS2351CycnIF0ngeKFN/okKgZKzIk5ThqfjQp49JS\nmHehqRxs9GfdLJGRR9rDUPF0odm98EBk/zqtUbAeyt2XZNHxlgaNYBSJqFa7wny1\nnZalwhsU5MPagPHkw/upTg4qQLFTdePpOBuwFkw3RHMgmFWytxWrP5Jmky26WKfU\neQIDAQAB\n-----END PUBLIC KEY-----"
+sPubRik = "-----BEGIN PUBLIC KEY-----\nMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAwc9uIwmdNbFUMB797+C7\n3/QATMflxFfljonKo6QKmZJ0U2zqbYJCOug+eghb3Lehf97Ik+gjHUZbc3sy1Wzt\nDFreiRIVx8Z6jfo1IlH1Pcn3/4PBr3cU7JDNMUNV4VaVn75QJVveUIJ5YptN7oZG\nUZkI4AShPv5hIpSygLF1UJYZ2xK6UeGGnIkVdtECIBeCRHnKrcv0XgIL5fvMcsqR\nupTSmo/oBc8rajJ/QjGx/If8nIfNn1PmKsv5s/GeThFe5iOLPX3PMr19bdUlNCjh\nFfjx9DURZgmkiXxjK3xMdYLKqUKQpx3TJkaEwF04zzCedytc9iaXxE98s+bqMXPk\nIQIDAQAB\n-----END PUBLIC KEY-----"
 # Ora dobbiamo ricreare le chiavi a partire da queste due stringhe
 key_pair = RSA.import_key(sPriv)
 public_key = RSA.import_key(sPub)
@@ -49,10 +48,16 @@ def decrypt_message(encrypted_message, priv_key):
 
 
 # Example usage
-message = "This is a secret message"
-encrypted_message = encrypt_message(message, public_key)
-decrypted_message = decrypt_message(encrypted_message, key_pair)
+#Encrypt
+# message = "Ciao Ricky! :3"
+# encrypted_message = encrypt_message(message, public_key)
+# print("Original Message:", message)
+# print("Encrypted Message:", encrypted_message)
 
-print("Original Message:", message)
-print("Encrypted Message:", encrypted_message)
+#Decrypt
+message = "eMDNbsA4JT4tiLHM9GD9o2Ngx6aKUZ3DQ2My0moAO6qofL7snK8vQglXDwTRJKzJuYKieva8OdUx44aapamMimcfeseClK0uCSAkx4COZORf/2vJg6jSoDDRt0jpPbhxp2uEwNHE5IQ+TtHXiu3AmVqA+dXjrKyZfin6TGnFT3ABn5GOSVA55ijpf03T8WCxpgrI70Yax5J7JVg4IOgrPCyooyNvJzbvllS6hCEztVxY5Ozd9XK94gSfDVKWh2O7Q/Fh4ESThJjd5L+AMRU1BmnLH93/0J0fWoY/2Ehmu8XFRy1iXNUoKb48Ttdc4J4O0Tkg3KOmBQpkpBr4DPW46Q=="
+
+decrypted_message = decrypt_message(message, key_pair)
+
+print("Encrypted Message:", message)
 print("Decrypted Message:", decrypted_message)
