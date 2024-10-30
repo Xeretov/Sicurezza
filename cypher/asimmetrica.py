@@ -64,13 +64,13 @@ def main():
             public_key = load_public_key(pub_key_path)
             message = input("\nInserisci il messaggio da cifrare: ")
             encrypted_message = encrypt_message(message, public_key)
-            print("\nMessaggio cifrato:\n", encrypted_message)
+            print("\nMessaggio cifrato:\n", encrypted_message, sep="")
 
         elif choice == '3':
             private_key = load_private_key()
             encrypted_input = input("\nInserisci il messaggio cifrato da decifrare: ")
             decrypted_message = decrypt_message(encrypted_input, private_key)
-            print("\nMessaggio decifrato:\n", decrypted_message)
+            print("\nMessaggio decifrato:\n", decrypted_message, sep="")
 
        
 
