@@ -10,16 +10,16 @@ int numero=100;
 char nome[16] = "Franco";
 
 char * login() {
-char username[32];
-printf("Username: ");
-gets(username);
-char * p = (char*)malloc(32);
-strcpy(p, username);
-return p;
+    char username[32];
+    printf("Username: ");
+    gets(username);
+    char * p = (char*)malloc(32);
+    strcpy(p, username);
+    return p;
 }
 
 int main() {
-char * username;
-username = login();
-printf("User: %s\n", username);
+    char * username;
+    username = login();
+    printf("User: %s\n", username);
 }
