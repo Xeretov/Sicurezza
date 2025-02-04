@@ -3,7 +3,7 @@ from collections import Counter
 import json
 import re
 from datetime import datetime, timedelta
-import numpy as np
+import chardet
 
 def make_serializable(obj):
     """Recursively converts non-serializable types in a dictionary or list to serializable ones."""
@@ -25,7 +25,7 @@ def make_serializable(obj):
         except:
             return "Unserializable Object"
 
-def analyze_web_logs(log_file):
+def analyze_web_logs(log_file, encoding):
     """Analyzes web logs for cyber security insights.
 
     Args:
@@ -38,7 +38,7 @@ def analyze_web_logs(log_file):
     try:
         # Improved log parsing to handle variations and potential errors
         log_data = []
-        with open(log_file, 'r') as f:
+        with open(log_file, 'r', encoding=encoding) as f:
             for line in f:
                 try:
                     # Example log format:  host - - [timestamp] "request" status_code bytes
@@ -72,6 +72,8 @@ def analyze_web_logs(log_file):
 
     highest_bytes_sent = df.nlargest(10, 'bytes_sent')
     insights['highest_bytes_sent'] = highest_bytes_sent[['host', 'timestamp', 'request', 'status_code', 'bytes_sent']].to_dict()
+
+    insights['highest_bytes_per_host'] = df.groupby('bytes_sent')['host'].head(10).to_dict()
 
     insights['requests_by_method'] = {}
     method_counts = df['method'].value_counts()
@@ -168,7 +170,10 @@ def save_report_json(insights, output_file="cyber_report.json"):
 
 # Example usage:
 log_file_path = 'NASA_access_log_Aug95'  # Replace with your log file path
-analysis_results = analyze_web_logs(log_file_path)
+encoding = ""
+with open(log_file_path, 'rb') as f:
+    encoding = chardet.detect(f.read())['encoding']
+analysis_results = analyze_web_logs(log_file_path, encoding)
 
 if "error" in analysis_results:
     print(analysis_results["error"])
