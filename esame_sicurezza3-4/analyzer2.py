@@ -70,6 +70,9 @@ def analyze_web_logs(log_file):
     insights['frequent_request'] = df['request'].value_counts().head(20).to_dict()
     insights['requests_per_hour'] = df['timestamp'].str.split(' ').str[0].str.split(':').str[1].value_counts().to_dict()
 
+    highest_bytes_sent = df.nlargest(10, 'bytes_sent')
+    insights['highest_bytes_sent'] = highest_bytes_sent[['host', 'timestamp', 'request', 'status_code', 'bytes_sent']].to_dict()
+
     insights['requests_by_method'] = {}
     method_counts = df['method'].value_counts()
     for method, count in method_counts.items():
@@ -127,6 +130,8 @@ def analyze_web_logs(log_file):
 
     insights['high_error_hosts'] = {item['host']: item for item in sorted_high_error_data[:10]}
 
+
+
     insights['hourly_traffic_per_day'] = {}
 
     try:
@@ -168,6 +173,7 @@ analysis_results = analyze_web_logs(log_file_path)
 if "error" in analysis_results:
     print(analysis_results["error"])
 else:
-    time = str(datetime.datetime.now())
-    report_file = "report_"+time+".log"
+    time = datetime.now()
+    formatted = time.strftime("%Y-%m-%d_%H%M%S")  
+    report_file = "report_"+formatted+".log"
     save_report_json(analysis_results, report_file)  # Save to JSON file
