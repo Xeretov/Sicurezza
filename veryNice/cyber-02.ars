@@ -1,0 +1,35 @@
+(* *)
+
+DEFINE ipset caso01_ip = { *.*.*.*:8888}; 
+
+DEFINE AR "Caso01"
+    CONDITION
+       net.ipdst is in caso01_ip
+    ACTION
+        TCP.REDIRECT "*.*.*.*:3000"
+    ;
+
+
+DEFINE VR "log"
+  CONDITION
+      obs.event is net.send
+  ACTION
+		REPORT log1 { 
+      CAT { 
+        "IP source: ", net.ipsrc, "\n",
+        "IP dst: ", net.ipdst, "\n",
+        "Host: ", http.host, ", ", http.method, ", ", http.uri, ", ", OBS.TIME, 
+        "\n"
+        }}
+  ;
+
+DEFINE VR "logback"
+  CONDITION
+      obs.event is net.recv
+  ACTION
+    REPORT log2 { CAT {"0: ", http.answer.code, " ",
+    http.answer.data} }
+;
+
+        // "IP source: ", net.ipsrc ":[0-9]+" "", ". Port source: ",  net.ipsrc "[0-9.]+:" "", 
+        // "IP dst: ", net.ipdst ":[0-9]+" "", ". Port source: ",  net.ipdst "[0-9.]+:" "",
