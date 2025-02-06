@@ -26,7 +26,9 @@ app.get("/api", (req, res) => {
 });
 
 let options = {};
+let host = "172.18.0.1"
+let port = 30002;
 
-http.createServer(options, app).listen(3000, () => {
+http.createServer(options, app).listen(3000, (host, port) => {
   console.log("HTTP server running at http://localhost:3000");
 });

@@ -34,10 +34,10 @@ Questa repository contiene diversi progetti e script relativi alla sicurezza inf
 ### Chiavi e Dati Crittografati (/keys)
 
 Contiene vari file relativi a operazioni crittografiche:
-- Chiavi pubbliche e private
-- File crittografati e decrittati
-- Hash di dati
-- Firme digitali
+-Chiavi pubbliche e private
+-File crittografati e decrittati
+-Hash di dati
+-Firme digitali
 
 ## Utilizzo
 
@@ -48,4 +48,3 @@ Per utilizzare gli script di crittografia:
 3. Eseguire gli script dalla riga di comando
 
 Per l'invio di email, configurare le credenziali SMTP appropriate in `program.py`.
-
