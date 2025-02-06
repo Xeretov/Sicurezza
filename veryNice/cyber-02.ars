@@ -1,48 +1,68 @@
 (*_*)
 
-DEFINE ipset caso01_ip = { *.*.*.*:30002};
+DEFINE ipset all_ip = { *.*.*.*:*};
 DEFINE urlset caso01_url = {/api, /api*, /api/*/ }; // */
 
 DEFINE set utenti_bloccati = {"arcieri"};
 
-DEFINE AR "Bloccati"
+DEFINE AR "Caso01_Bloccati"
     CONDITION
+        http.url is in caso01_url
         http.query['username'] is in utenti_bloccati
     ACTION
-        ANSWER "<p>403 - Utente bloccato</p>"
+        ANSWER "<p>401 - Forbidden</p>"
     ;
 
 DEFINE AR "Caso01"
     CONDITION
         http.url is in caso01_url
-        net.ipdst is in caso01_ip
     ACTION
         TCP.REDIRECT "10.46.8.124:3000"
     ;
 
+DEFINE AR "Il Resto"
+    CONDITION
+        net.ipdst is in all_ip
+    ACTION
+        ANSWER "<h1>Sito in manutenzione</h1>"
+    ;
 
 DEFINE VR "log"
     CONDITION
         obs.event is net.send
+        http.url is in caso01_url
     ACTION
 		REPORT log1 { 
             CAT { 
-            "IP source: ", net.ipsrc, "\n",
-            "IP dst: ", net.ipdst, "\n",
-            "Host: ", http.host, ", ", http.method, ", ", http.uri, ", ", OBS.TIME, 
-            "\n"
+            "Time : ", OBS.TIME, "\n",
+            "Host : ",http.host, "\n",
+            "Method : ",http.method, "\n",
+            "Url : ",http.url, "\n",
+            "Query : ",http.query, "\n\n"
             }}
     ;
 
-DEFINE VR "logback"
+DEFINE VR "apiback"
     CONDITION
-        obs.event is net.recv
+        obs.event is net.send
     ACTION
-        REPORT log2 { 
-            CAT {"0: ", http.answer.code, " ",
-            http.answer.data
+        REPORT api { 
+            CAT {
+                "Server->Client\n",
+                "Code: ",
+                ""
             }}
-    ;
+
+
+// DEFINE VR "logback"
+//     CONDITION
+//         obs.event is net.recv
+//     ACTION
+//         REPORT log2 { 
+//             CAT {"0: ", http.answer.code, " ",
+//             http.answer.data
+//             }}
+//     ;
 
         // "IP source: ", net.ipsrc ":[0-9]+" "", ". Port source: ",  net.ipsrc "[0-9.]+:" "", 
         // "IP dst: ", net.ipdst ":[0-9]+" "", ". Port source: ",  net.ipdst "[0-9.]+:" "",
