@@ -1,0 +1,21 @@
+(*_*)
+
+ 
+DEFINE ipset tuttigli_ip = { *.*.*.*:* };
+DEFINE urlset login_form = { /login, /login*, /login/*/ }; // */
+
+DEFINE AR "sql_injection2"
+	CONDITION
+		http.query['username'] is "OK" "[a-zA-Z0-9._-@]+" "OK"
+		http.url is in login_form
+	ACTION
+		TCP.REDIRECT "10.8.0.26:8888"
+	;
+
+
+DEFINE AR "Il Resto"
+    CONDITION
+    	net.ipdst is in tuttigli_ip
+    ACTION
+        TCP.REDIRECT "10.8.0.26:8888"
+    ;
