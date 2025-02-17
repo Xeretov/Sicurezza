@@ -1,0 +1,45 @@
+CAT{Time : 1739794870
+Host : 127.0.0.1:61100
+Method : GET
+Url : /
+Query : what=init
+data : 
+
+}|
+
+CAT{Time : 1739794870
+Host : 
+Method : 
+Url : 
+Query : 
+data : 
+
+}|
+
+CAT{Time : 1739795583
+Host : 127.0.0.1:61108
+Method : GET
+Url : /ReqJson
+Query : 
+data : 
+
+}|
+
+CAT{Time : 1739795642
+Host : 127.0.0.1:61108
+Method : POST
+Url : /ReqJson
+Query : 
+data : 
+
+}|
+
+CAT{Time : 1739795642
+Host : 
+Method : 
+Url : 
+Query : 
+data : 
+
+}|
+

@@ -1,0 +1,55 @@
+DEFINE ipset caso01_ip = { *.*.*.*:* };
+DEFINE urlset url_control = { /login, /login, /login// }; // */
+
+DEFINE set allUsers = mysql { "192.168.150.2:12006", "cyber01", "root", "root", "select username from users" };
+
+DEFINE AR "control"
+    CONDITION
+        http.url is in urlcontrol
+        http.method is HTTP.POST
+        http.query[username] is "ciao" "[a-zA-Z0-9!.@]+" "ciao"
+    ACTION
+        TCP.REDIRECT "192.168.101.10:8087"
+    ;
+
+DEFINE AR "control_denied"
+    CONDITION
+        http.url is in urlcontrol 
+        http.method is HTTP.POST
+        HTTP.DATA[username] is "hello" "[a-zA-Z0-9!.@+\"\'%&- ]+" "hello"
+    ACTION
+        ANSWER "<h1>401 -  FORBIDDEN</h1>"
+   ;
+
+DEFINE AR "trasferisci"
+    CONDITION
+        net.ipsrc is in caso01_ip
+        http.method is HTTP.GET
+    ACTION
+        TCP.REDIRECT "192.168.101.10:8087"
+    ;
+
+DEFINE AR "trasferisci_3"
+    CONDITION
+        net.ipsrc is in caso01_ip
+    ACTION
+        ANSWER "<h1>BUCO NERO</h1>"
+    ;
+
+DEFINE VR "trasferisci_1"
+    CONDITION
+        net.ipsrc is in caso01_ip
+    ACTION
+        REPORT Cattivoni1 {
+            CAT {
+                "Time : ", OBS.TIME, "\n",
+                "Host : ", http.host, "\n",
+                "Method : ", http.method, "\n",
+                "Url : ", http.url, "\n",
+                "Query : ", http.query, "\n",
+                "data : ", http.data, "\n\n"
+        }
+        }
+        REPORT cat2 { http.data[username] }
+        REPORT cat3 { http.query[username] }
+    ;
