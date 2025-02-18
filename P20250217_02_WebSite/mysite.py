@@ -104,7 +104,25 @@ def initialize():
     # for item in users:
     #     listaQuery.append('select * from users where username="'+item['username']+'" and password="' + item["password"] + '";')
     
+@app.route('/fill', methods=['GET'])
+def fill():
+    db, conn = get_db()
+    for i in range(1, 10000):
+        r = os.urandom(8)
+        name = f"User {r.hex()}"
+        password = f"Password {r.hex()}"
+        db.execute(f"INSERT INTO users (username, password) VALUES ('{name}', '{password}')")
+    conn.commit()
+    flash("10000000 items added!", "success")
+    return redirect(url_for('show_items'))
 
+@app.route('/getall', methods=['GET'])
+def getall():
+    db, conn = get_db()
+    db.execute("SELECT * FROM users")
+    items = db.fetchall()
+
+    return render_template('dynamicusers.html', items=items)
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
@@ -259,6 +277,17 @@ def show_items():
     items = db.fetchall()
 
     return render_template('dynamic.html', items=items)
+
+@app.route('/users')
+def show_users():
+    if 'user_id' not in session:
+        flash("You must be logged in to view users.", "warning")
+        return redirect(url_for('login'))
+    db, conn = get_db()
+    db.execute("SELECT * FROM users")
+    users = db.fetchall()
+
+    return render_template('dynamicusers.html', items=users)
 
 
 myip = "192.168.101.10"
