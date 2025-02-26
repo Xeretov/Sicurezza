@@ -3,7 +3,7 @@ from collections import Counter
 import json
 import re
 from datetime import datetime, timedelta
-import chardet
+import numpy as np
 
 def make_serializable(obj):
     """Recursively converts non-serializable types in a dictionary or list to serializable ones."""
@@ -25,7 +25,7 @@ def make_serializable(obj):
         except:
             return "Unserializable Object"
 
-def analyze_web_logs(log_file, encoding):
+def analyze_web_logs(log_file):
     """Analyzes web logs for cyber security insights.
 
     Args:
@@ -38,7 +38,7 @@ def analyze_web_logs(log_file, encoding):
     try:
         # Improved log parsing to handle variations and potential errors
         log_data = []
-        with open(log_file, 'r', encoding=encoding) as f:
+        with open(log_file, 'r') as f:
             for line in f:
                 try:
                     # Example log format:  host - - [timestamp] "request" status_code bytes
@@ -69,11 +69,6 @@ def analyze_web_logs(log_file, encoding):
     insights['request_counts_per_ip'] = df['host'].value_counts().head(20).to_dict()
     insights['frequent_request'] = df['request'].value_counts().head(20).to_dict()
     insights['requests_per_hour'] = df['timestamp'].str.split(' ').str[0].str.split(':').str[1].value_counts().to_dict()
-
-    highest_bytes_sent = df.nlargest(10, 'bytes_sent')
-    insights['highest_bytes_sent'] = highest_bytes_sent[['host', 'timestamp', 'request', 'status_code', 'bytes_sent']].to_dict()
-
-    insights['highest_bytes_per_host'] = df.groupby('bytes_sent')['host'].head(10).to_dict()
 
     insights['requests_by_method'] = {}
     method_counts = df['method'].value_counts()
@@ -132,8 +127,6 @@ def analyze_web_logs(log_file, encoding):
 
     insights['high_error_hosts'] = {item['host']: item for item in sorted_high_error_data[:10]}
 
-
-
     insights['hourly_traffic_per_day'] = {}
 
     try:
@@ -170,15 +163,11 @@ def save_report_json(insights, output_file="cyber_report.json"):
 
 # Example usage:
 log_file_path = 'NASA_access_log_Aug95'  # Replace with your log file path
-encoding = ""
-with open(log_file_path, 'rb') as f:
-    encoding = chardet.detect(f.read())['encoding']
-analysis_results = analyze_web_logs(log_file_path, encoding)
+analysis_results = analyze_web_logs(log_file_path)
 
 if "error" in analysis_results:
     print(analysis_results["error"])
 else:
-    time = datetime.now()
-    formatted = time.strftime("%Y-%m-%d_%H%M%S")  
-    report_file = "report_"+formatted+".log"
+    time = str(datetime.datetime.now())
+    report_file = "report_"+time+".log"
     save_report_json(analysis_results, report_file)  # Save to JSON file
