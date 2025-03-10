@@ -1,0 +1,21 @@
+xqaqot dvmuk sc fwsk sk fwu jmqxz juaksfu vk yqxz vk sf dqxfvsxk fwu cyvz: cyvz{dmtrfqpnsrk_vmu_aqmx_fq_au_amqeux}
+
+nobody cares if this is the wrong website as long as it contains the flag: flag{cryptoquips_are_born_to_be_broken}
+
+a -> b
+c -> f
+d -> c
+f -> t
+j -> w
+k -> s
+m -> r
+o -> d
+q -> o
+s -> i
+t -> y
+u -> e
+v -> a
+w -> h
+x -> n
+y -> l
+z -> g
