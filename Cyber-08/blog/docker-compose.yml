@@ -1,0 +1,42 @@
+version: '3.8'
+
+services:
+  web:
+    build: ./web
+    container_name: php-app
+    ports:
+      - "8080:80"
+    depends_on:
+      - db
+    networks:
+      - phpmynet
+
+  db:
+    image: mysql:5.7
+    container_name: mysql-db
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: test
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    networks:
+      - phpmynet
+
+  # sonarqube:
+  #   image: sonarqube:lts
+  #   container_name: sonarqube
+  #   ports:
+  #     - "9000:9000"
+  #   networks:
+  #     - phpmynet
+
+volumes:
+  mysql_data:
+
+networks:
+  phpmynet:
+    driver: bridge
+
